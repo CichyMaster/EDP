@@ -1,8 +1,6 @@
 package Controller.MainPanel;
 
 import View.EditView;
-import View.RejestrationView;
-import View.SearchView;
 import View.SwingConsole;
 
 import java.awt.event.ActionEvent;

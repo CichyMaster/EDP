@@ -10,9 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DeleteController implements ActionListener {
-    private Service service = Service.getInstance();
-    private DeleteView view;
-    private DefaultTableModel model;
+    private final Service service = Service.getInstance();
+    private final DeleteView view;
+    private final DefaultTableModel model;
     public DeleteController(DeleteView view, DefaultTableModel model){
         this.view = view;
         this.model = model;
@@ -53,7 +53,7 @@ public class DeleteController implements ActionListener {
                             service.deleteRepair(searchText);
                         }
                         JOptionPane.showMessageDialog(null,
-                                "Usunięto przypadek", "Informacja",
+                                "Usunięto przypadek " + searchText, "Informacja",
                                 JOptionPane.INFORMATION_MESSAGE);
                         model.setDataVector(null, TableContents.TABLE_HEADER);
                         view.deleteButton.setEnabled(false);

@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import View.RejestrationView;
 import View.SearchView;
 import View.SwingConsole;
 public class SControl extends WindowAdapter implements ActionListener {

@@ -1,7 +1,6 @@
 package Controller.MainPanel;
 
 import View.DeleteView;
-import View.RejestrationView;
 import View.SwingConsole;
 
 import java.awt.event.ActionEvent;

@@ -1,6 +1,8 @@
 package Model;
 
 import java.sql.*;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -44,10 +46,11 @@ public class Service {
         public String nextNrCase(){
             String nextCase;
             try{
-                ResultSet result = stat.executeQuery("SELECT nr_case FROM \"Repairs\" ORDER BY id_repair DESC LIMIT 1");
                 String currentCase;
-                result.next();
-                currentCase = result.getString("nr_case");
+                try (ResultSet result = stat.executeQuery("SELECT nr_case FROM \"Repairs\" ORDER BY id_repair DESC LIMIT 1")) {
+                    result.next();
+                    currentCase = result.getString("nr_case");
+                }
 
                 int number = Integer.parseInt(currentCase.substring(3));
                 number++;
@@ -181,6 +184,7 @@ public class Service {
 
         public synchronized boolean updateRepair(String nrCase, long imei, int idPhone, int idWorker, String operator, String status, String admissionDate, String endDate){
         try{
+            checkDates(admissionDate, endDate);
             PreparedStatement prepStmt = conn.prepareStatement(
                     "UPDATE \"Repairs\" SET imei=?, id_phone=?, id_worker=?, operator=?, status=?, admission_date=?, end_date=? WHERE nr_case = ?;");
             prepStmt.setLong(1, imei);
@@ -210,7 +214,7 @@ public class Service {
         }else if (matcher.matches()) {
            return Date.valueOf(input);
         } else {
-            throw new IllegalArgumentException("Zły format");
+            throw new IllegalArgumentException("Zły format dat");
         }
     }
 
@@ -220,6 +224,13 @@ public class Service {
         } else {
             return input;
         }
+    }
+
+    public void checkDates(String earlierDate, String laterDate) {
+       if(LocalDate.parse(earlierDate).isAfter(LocalDate.parse(laterDate)))
+       {
+           throw new DateTimeException("Data przyjęcia jest po dacie zakonczenia");
+       }
     }
 
     public synchronized boolean deleteRepair(String nrCase){

@@ -18,7 +18,7 @@ public class Show implements ActionListener {
     }
 
     private String changeOfNull(String text){
-        if(text != "null"){
+        if(!text.equals("null")){
             return text;
         }else {
             return null;

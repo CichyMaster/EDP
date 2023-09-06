@@ -8,8 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SearchController implements ActionListener {
-    private JTextField searchTextField;
-    private DefaultTableModel model;
+    private final JTextField searchTextField;
+    private final DefaultTableModel model;
 
     public SearchController(JTextField searchTextField, DefaultTableModel model){
         super();

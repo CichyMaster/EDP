@@ -1,35 +1,14 @@
 package Model;
 
 public class Workers {
-    private String acronym;
-    private String firstName;
-    private String lastName;
+    private final String acronym;
+    private final String firstName;
+    private final String lastName;
 
     public String getAcronym() {
         return acronym;
     }
 
-    public void setAcronym(String acronym) {
-        this.acronym = acronym;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Workers(){};
     public Workers(String acronym, String firstName, String lastName){
         this.acronym = acronym;
         this.firstName = firstName;

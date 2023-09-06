@@ -280,7 +280,9 @@ public class EditView extends JFrame {
         bottomPane.add(acceptButton, gbc);
 
 
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, topPane, bottomPane);
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+        splitPane.setTopComponent(topPane);
+        splitPane.setBottomComponent(bottomPane);
         splitPane.setDividerLocation(35);
         splitPane.setEnabled(false);
 
