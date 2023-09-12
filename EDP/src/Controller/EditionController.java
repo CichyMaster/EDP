@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Service;
+import Model.Phones;
 import View.EditView;
 
 import javax.swing.*;
