@@ -1,7 +1,5 @@
 package Controller;
 
-import Model.TableContents;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
@@ -22,16 +20,8 @@ public class SearchController implements ActionListener {
 
         String searchText = searchTextField.getText();
         if(searchText != null && !"".equals(searchText)){
-            Object[][] newData = new Object[TableContents.contents().length][];
-            int index = 0;
-            for(Object[] o : TableContents.contents()){
-                if(String.valueOf(o[0]).startsWith(searchText.toUpperCase().trim()) || String.valueOf(o[1]).startsWith(searchText.toUpperCase().trim())){
-                    newData[index++] = o;
-                }else if(" ".equals(searchText)){
-                    newData[index++] = o;
-                }
-            }
-            model.setDataVector(newData, TableContents.TABLE_HEADER);
+            Thread thread = new Thread(new SearchingThread(searchText, model));
+            thread.start();
         }else{
             JOptionPane.showMessageDialog(null,
                     "Proszę wprowadzić tekst", "Error message",
