@@ -98,7 +98,7 @@ public class Service {
         return workers;
     }
 
-    public synchronized List<Repairs> selectRepairs() {
+    public List<Repairs> selectRepairs() {
         List<Repairs> repairs = new LinkedList<>();
         try {
             ResultSet result = stat.executeQuery("""
