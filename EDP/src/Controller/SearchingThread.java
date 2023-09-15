@@ -22,7 +22,6 @@ public class SearchingThread implements Runnable{
                 newData[index++] = o;
             }
         }
-        System.out.println(Thread.currentThread());
         model.setDataVector(newData, TableContents.TABLE_HEADER);
     }
 }
