@@ -142,7 +142,7 @@ public class EditionController implements ActionListener {
                             JOptionPane.ERROR_MESSAGE);
                 } catch (DateTimeException dateTimeException) {
                     JOptionPane.showMessageDialog(null,
-                            "Data przyjęcia jest później niż data zakończenia ", "Błędne daty",
+                            "Data przyjęcia jest później niż data zakończenia\nlub brak daty przyjęcia ", "Błędne daty",
                             JOptionPane.ERROR_MESSAGE);
                 }
             default:
