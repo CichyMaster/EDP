@@ -50,7 +50,7 @@ public class DeleteController implements ActionListener {
                 for (Object[] o : TableContents.contents()) {
                     if (String.valueOf(o[0]).equals(searchText.toUpperCase().trim())) {
                         synchronized (Service.getInstance()) {
-                            service.deleteRepair(searchText);
+                            service.deleteRepair(searchText.toUpperCase().trim());
                         }
                         JOptionPane.showMessageDialog(null,
                                 "Usunięto przypadek " + searchText, "Informacja",
