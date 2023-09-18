@@ -5,6 +5,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -226,7 +227,7 @@ public class Service {
     public void checkDates(String earlierDate, String laterDate) {
         if(earlierDate.isEmpty() || laterDate.isEmpty()){
             if(earlierDate.isEmpty() && !laterDate.isEmpty()){
-                throw new DateTimeException("Data przyjęcia jest wymagana, gdy data zakonczenia zostałą wypełniona");
+                throw new NoSuchElementException("Data przyjęcia jest wymagana, gdy data zakonczenia zostałą wypełniona");
             }
         }else if (LocalDate.parse(earlierDate).isAfter(LocalDate.parse(laterDate))) {
            throw new DateTimeException("Data przyjęcia jest po dacie zakonczenia");

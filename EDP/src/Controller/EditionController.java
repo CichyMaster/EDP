@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.DateTimeException;
+import java.util.NoSuchElementException;
 
 public class EditionController implements ActionListener {
     EditView view;
@@ -142,7 +143,11 @@ public class EditionController implements ActionListener {
                             JOptionPane.ERROR_MESSAGE);
                 } catch (DateTimeException dateTimeException) {
                     JOptionPane.showMessageDialog(null,
-                            "Data przyjęcia jest później niż data zakończenia\nlub brak daty przyjęcia ", "Błędne daty",
+                            "Data przyjęcia jest później niż data zakończenia", "Błędne daty",
+                            JOptionPane.ERROR_MESSAGE);
+                }catch (NoSuchElementException noSuchElementException){
+                    JOptionPane.showMessageDialog(null,
+                            "Brak daty przyjęcia przy zakończonym przypadku", "Brak daty",
                             JOptionPane.ERROR_MESSAGE);
                 }
             default:
